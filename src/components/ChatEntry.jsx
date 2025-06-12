@@ -1,16 +1,9 @@
 import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
-import { useState } from 'react';
 
 const ChatEntry = (props) => {
-  const [isLiked, setIsLiked] = useState(false);
-
-  const handleHeartClick = () => {
-    setIsLiked(!isLiked);
-  };
-
-  const like = isLiked ? '❤️' : '🤍';
+  const like = props.liked ? '❤️' : '🤍';
 
   return (
     <div className="chat-entry local">
@@ -18,19 +11,25 @@ const ChatEntry = (props) => {
       <section className="entry-bubble">
         <p>{props.body}</p>
         <p className="entry-time">
-          <TimeStamp time={props.timeStamp} />
+          <TimeStamp
+            time={props.timeStamp}
+          />
         </p>
-        <button className="like"
-          onClick={handleHeartClick}>{like}</button>
+        <button className="like" onClick={() => props.onLikesChange(props.id)}>
+          {like}
+        </button>
       </section>
     </div>
   );
 };
 
 ChatEntry.propTypes = {
+  id: PropTypes.number.isRequired,
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
-  timeStamp: PropTypes.string.isRequired
+  timeStamp: PropTypes.string.isRequired,
+  liked: PropTypes.bool.isRequired,
+  onLikesChange: PropTypes.func.isRequired
 };
 
 export default ChatEntry;
