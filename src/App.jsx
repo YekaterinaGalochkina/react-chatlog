@@ -35,7 +35,7 @@ const App = () => {
       </header>
       <main>
         <div className="heart-count">
-          <span>{heartCount}❤️s</span>
+          <span>{heartCount} ❤️s</span>
         </div>
         <ChatLog
           entries={messages}
