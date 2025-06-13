@@ -28,6 +28,7 @@ const App = () => {
 
   const heartCount = calculateHearts();
 
+
   return (
     <div id="App">
       <header>
