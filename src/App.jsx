@@ -2,6 +2,7 @@ import './App.css';
 import ChatLog from './components/ChatLog';
 import data from './data/messages.json';
 import { useState } from 'react';
+import Header from './components/Header';
 
 const App = () => {
   const [messages, setMessages] = useState(data);
@@ -31,9 +32,7 @@ const App = () => {
 
   return (
     <div id="App">
-      <header>
-        <h1>Chatlog between Vladimir and Estragon</h1>
-      </header>
+      <Header data={messages} />
       <main>
         <div className="heart-count">
           <span>{heartCount} ❤️s</span>
